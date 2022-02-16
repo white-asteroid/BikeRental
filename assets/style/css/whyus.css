@@ -1,0 +1,41 @@
+.whyus-head{
+    display:inline-block;
+    width: auto;
+}
+body{
+height:auto !important;
+}
+
+
+
+.headerline{
+    background-color: #9c3;
+    height: 5px;
+    border-radius: 2px;
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.whyus-content > p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+button >.btn-text{
+    color: rgb(139, 0, 0) ;
+    text-decoration:none;
+}
+
+#why-start > div{
+    margin-bottom: 1.5rem;
+}
+
+
+.btn-text{
+    margin-bottom: 1.5rem;
+    width: 100%;
+    text-align-last: left;
+}

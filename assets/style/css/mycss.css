@@ -1,0 +1,70 @@
+/* FOR ALL FILE start */
+a:hover {
+    color: red;
+  }
+
+.mt_cc-5{
+    margin-top:5rem;
+}
+
+.div-center{
+    width:auto;
+    margin: 10px auto;
+}
+
+.div-vert-hor-center{
+    margin: 10rem 2rem;
+}
+/* FOR ALL FILE END */
+/* index  */
+/* align start*/
+.float-right{
+    float:right;
+}
+
+.float-left{
+    float:left;
+}
+/* align end */
+
+/* slider css */
+.h31,.slide-inner, .slide-item{
+    height:31rem;
+}
+.slide-item > img {
+    height:inherit;
+}
+/* slider end */
+
+/* quick view */
+.recent-tab{
+    width: auto;
+    margin: auto;
+    background-color: lightgray;
+}
+
+.recent-tab > ul >li > a{
+    color: darkred;
+    text-decoration: none;
+}
+.section-padding {
+    padding: 110px 0;
+}
+.gray-bg {
+    background: #eeeeee;
+}
+
+.p-3{
+    padding:10px;
+    margin: 10px;
+}
+
+/* quick view end */
+
+/* index end */
+
+/* header start */
+.bold {
+    font-weight: bold;
+}
+/* header end */

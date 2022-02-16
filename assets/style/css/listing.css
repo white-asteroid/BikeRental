@@ -1,0 +1,59 @@
+#filter-listing > div > button{background: #f76d2b none repeat scroll 0 0;
+    fill: #f76d2b;
+    border: medium none;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 30px;
+    margin: auto;
+    display: block;
+    width: 100%;
+    /* -webkit-transition: all 0.3s linear 0s; */
+    text-align: center;
+    white-space: nowrap;
+    /* vertical-align: middle; */
+}
+.sdetails{
+    list-style-type: none;
+}
+.sdetails > li{
+    float:left;
+    /* margin: 0 auto; */
+    font-weight: 400;
+    list-style: outside none none;
+    margin: 0 auto;
+    width: 33%;
+}
+
+.dbutt {
+    background: #f76d2b none repeat scroll 0 0;
+    fill: #f76d2b;
+    border: medium none;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 30px;
+    margin: auto;
+    margin-top: 1rem;
+    width: auto;
+    /* -webkit-transition: all 0.3s linear 0s; */
+    text-align: center;
+    white-space: nowrap;
+   
+}
+
+.list-img-h{
+    height: 100%;
+}
+
+.card-form{
+    width: auto;
+    margin: 10px auto;
+}
+
+.div-center{
+    width:auto;
+    margin:10px auto;
+}

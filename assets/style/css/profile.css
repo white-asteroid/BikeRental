@@ -1,0 +1,29 @@
+.pr-sidebar{
+    border-right: 1px solid #808080;
+    border-radius: 5px;
+    height: fit-content;
+}
+/* .profile-nav >ul > li {
+    list-style-type: none;
+} */
+.profile-nav >ul > li > a {
+    text-decoration:none;
+    color:#000000;
+    list-style-type: none;
+}
+
+.profile-nav >ul > li > a:hover {
+    /* text-decoration:none; */
+    color:#fc3434;
+    text-decoration:underline;
+
+}
+
+.profile-nav > ul > li > a:active {
+    text-decoration: underline;
+}
+
+.pr-form{
+    background-color: #faebd7;
+    padding: 2rem;
+}
