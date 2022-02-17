@@ -6,7 +6,7 @@ if (!isset($_SESSION['email'])) {
 if (isset($_POST['search'])) {
     // if (isset($_POST['brand']))
     // {
-        $brand = $_POST['brand'];
+    $brand = $_POST['brand'];
     // }
     // else{
     //     $brand = 1;
@@ -14,10 +14,9 @@ if (isset($_POST['search'])) {
     $fueltype = $_POST['fueltype'];
     $sql = "SELECT VehiclesTitle, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles where VehiclesBrand = :brand AND FuelType = :fueltype;";
     $query = $dbh->prepare($sql);
-    $query -> bindParam(':brand',$brand, PDO::PARAM_STR);
-    $query -> bindParam(':fueltype',$fueltype, PDO::PARAM_STR); 
-}   
-else{
+    $query->bindParam(':brand', $brand, PDO::PARAM_STR);
+    $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
+} else {
     $sql = "SELECT VehiclesTitle, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles;";
     $query = $dbh->prepare($sql);
 }
@@ -26,8 +25,7 @@ $query->execute();
 // echo $query->rowCount();
 if ($query->rowCount()) {
     $results = $query->fetchAll(PDO::FETCH_OBJ);
-}
-else{
+} else {
     echo "<script>
     alert('No scooty for this brand and type available Choose anathore one');
     window.location.href='listing.php';
@@ -58,6 +56,7 @@ else{
     <link rel="stylesheet" href="assets\style\css\listing.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="assets\fonts\icomoon\style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>2-Rent Listings</title>
     <style>
         /* .card-form {
@@ -69,11 +68,15 @@ else{
             width: auto;
             margin: 10px auto;
         } */
+        
     </style>
 </head>
 
 <body>
-    <?php include 'includes\headers.php'; ?>
+    
+    <?php
+    include 'includes\order.php';
+    include 'includes\headers.php'; ?>
 
 
     <div class="container mt-3">
@@ -95,7 +98,7 @@ else{
 
 
                             <select class="form-select mb-3" name="fueltype">
-                                <option selected disabled >Select Fuel Type</option>
+                                <option selected disabled>Select Fuel Type</option>
                                 <option value="Petrol">Petrol</option>
                                 <option value="Electric">Electric</option>
                                 <!-- <option value="CNG">CNG</option> -->
@@ -129,7 +132,11 @@ else{
                                         <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
                                     </ul>
                                     <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-                                    <button type="button" class="btn btn-outline-primary dbutt">Primary <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-primary dbutt"  onclick="document.getElementById('order101').style.display='block'">
+                                        Confirm Order <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    </button>
+
+                                    <!-- <button type="button" class="btn btn-outline-primary dbutt">Primary <i class="fa fa-angle-right" aria-hidden="true"></i></button> -->
                                 </div>
                             </div>
                         </div>
