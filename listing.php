@@ -12,12 +12,12 @@ if (isset($_POST['search'])) {
     //     $brand = 1;
     // }
     $fueltype = $_POST['fueltype'];
-    $sql = "SELECT VehiclesTitle, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles where VehiclesBrand = :brand AND FuelType = :fueltype;";
+    $sql = "SELECT id,VehiclesTitle, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles where VehiclesBrand = :brand AND FuelType = :fueltype;";
     $query = $dbh->prepare($sql);
     $query->bindParam(':brand', $brand, PDO::PARAM_STR);
     $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
 } else {
-    $sql = "SELECT VehiclesTitle, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles;";
+    $sql = "SELECT id,VehiclesTitle, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles;";
     $query = $dbh->prepare($sql);
 }
 
@@ -115,7 +115,12 @@ if ($query->rowCount()) {
             </div>
             <div class="offset-md-1 col-sm-8">
                 <!-- main listing -->
-                <?php foreach ($results as $result) {  ?>
+                <?php foreach ($results as $result) { 
+                    // $_SESSION['vid']= $result->id;
+                    echo "id is $result->id";
+                    // $vid= $result->id;
+                    ?>
+                    
                     <div class="card mb-4">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -132,8 +137,9 @@ if ($query->rowCount()) {
                                         <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
                                     </ul>
                                     <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-                                    <button type="button" class="btn btn-primary dbutt"  onclick="document.getElementById('order101').style.display='block'">
-                                        Confirm Order <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                    <button type="button" class="btn btn-primary dbutt"  onclick="confirmOrder(<?php echo htmlentities($result->id); ?>)"> 
+                                    <!--document.getElementTagName('header').style.display='none';document.getElementById('order101').style.display='block'; -->
+                                        Place Order <i class="fa fa-angle-right" aria-hidden="true"></i>
                                     </button>
 
                                     <!-- <button type="button" class="btn btn-outline-primary dbutt">Primary <i class="fa fa-angle-right" aria-hidden="true"></i></button> -->
@@ -214,6 +220,26 @@ if ($query->rowCount()) {
 
 
     <?php include 'includes\footer.php'; ?>
+    <script>
+        function confirmOrder(va)
+        {
+        document.getElementById('header101').style.display='none';
+        document.getElementById('order101').style.display='block';
+        console.log("this is id"+ va);
+        sessionStorage.vid = va;
+        document.cookie = vid+ "="+ va;
+        console.log("cokkie : "+ getCookie(vid) );
+        // ck_vid =va;
+
+        // setcookie(ck_vid);
+        console.log("this is id ifuncn session "+ sessionStorage.vid);
+        }
+
+        function confirmOrderClose(){
+            document.getElementById('header101').style.display='block';
+        document.getElementById('order101').style.display='none';
+        }
+    </script>
 </body>
 
 </html>

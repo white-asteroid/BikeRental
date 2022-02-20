@@ -41,7 +41,7 @@ include 'includes\forgotpassword.php';
             <label><b>Password</b></label>
             <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
             <button class="w3-button w3-block w3-green w3-section w3-padding" value="login" name="login" type="submit">Login</button>
-            <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+            <!-- <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me -->
           </div>
         </form>
 
