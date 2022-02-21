@@ -105,7 +105,7 @@ if ($query->rowCount()) {
                   <div class="card-body">
                     <h5 class="card-title"><?php echo htmlentities($result->VehiclesBrand);?></h5>
                     <p class="card-text"><?php echo htmlentities($result->VehiclesOverview);?> </p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="product.php?vid=<?php echo htmlentities($result->id);?>" class="btn btn-primary">Go somewhere</a>
                   </div>
                 </div>
               </div>

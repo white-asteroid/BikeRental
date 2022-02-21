@@ -1,10 +1,26 @@
-<?php
- include 'includes\config.php';
-
+<?php include 'includes/config.php';
 if (!isset($_SESSION['email'])) {
     header('location:index.php');
 }
+$email = $_SESSION['email'];
+// $sqlu = "SELECT * FROM users where EmailId = :email";
+$sql = "SELECT o.id as oid , o.uid as uid ,o.VehicleId as vid, o.fromdate as fromd, o.ToDate as tod, u.FullName as fn, v.VehiclesTitle as vt FROM orders o, users u, vehicles v WHERE u.id = o.uid && v.id = o.VehicleId && u.EmailId = :email ;";
+$query = $dbh->prepare($sql);
+$query->bindParam(':email', $email, PDO::PARAM_STR);
+$query->execute();
+// echo $query->rowCount();
+if ($query->rowCount()) {
+    $results = $query->fetchAll(PDO::FETCH_OBJ);
+    // echo "$results[0]->FullName";
+} 
+else{
+    echo "<script>
+    alert('No order found. Please place your order first');
+    window.location.href='listing.php';
+  </script>";
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,9 +51,9 @@ if (!isset($_SESSION['email'])) {
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Devanshi</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <h5 class="card-title"><?php echo htmlentities($results[0]->fn); ?></h5>
+                            <p class="card-text">Thanks for choosing us.  We won't let you down and will gear you up</p>
+                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                         </div>
                     </div>
                 </div>
@@ -49,25 +65,37 @@ if (!isset($_SESSION['email'])) {
                     <ul>
                         <!-- <li><a href="profile.php">Profile Settings</a></li> -->
                         <li><a href="changepass.php">Update Password</a></li>
-                        <li><a href="myorder.php">My Booking</a></li>
+                        <li><a href="my-booking.php">My Booking</a></li>
                         <li><a href="logout.php">Sign Out</a></li>
                     </ul>
                 </div>
             </div>
             <div class="offset-md-1 col-md-8 col-sm-12">
-                <form class="pr-form">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <!-- <th scope="col">sno</th> -->
+                            <th scope="col">Oorder id</th>
+                            <th scope="col">Vehicle name</th>
+                            <th scope="col">From</th>
+                            <th scope="col">To</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($results as $result) { ?>
+                        <tr>
+                            <td> <?php echo htmlentities($result->oid) ?> </td>
+                            <td><?php echo htmlentities($result->vt) ?></td>
+                            <td><?php echo htmlentities($result->fromd) ?></td>
+                            <td><?php echo htmlentities($result->tod) ?></td>
+                        </tr>
+                        <?php } ?>
+            
+                    </tbody>
+                </table>
+
+
             </div>
         </div>
     </div>

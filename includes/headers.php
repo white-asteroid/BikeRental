@@ -68,9 +68,9 @@
 
                 </button>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                    <li><a class="dropdown-item active" href="#">My orders</a></li>
-                    <li><a class="dropdown-item" href="profile.php">Profile settings</a></li>
-                    <li><a class="dropdown-item" href="#">update password</a></li>
+                    <li><a class="dropdown-item active" href="myorder.php">My orders</a></li>
+                    <li><a class="dropdown-item" href="myorder.php">Profile settings</a></li>
+                    <li><a class="dropdown-item" href="changepass.php">update password</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

@@ -6,7 +6,7 @@
 <!-- Modal -->
 <!-- <button onclick="document.getElementById('order101').style.display='block'" class="w3-button w3-black">Open Modal</button> -->
 <!-- <?php 
-$vid= $_SESSION['vid'];
+ $vid= $_SESSION['vid'];
 ?> -->
 <div id="order101" class="w3-modal" style="display:none;">
   <div class="w3-modal-content w3-card-4 w3-animate-zoom">
@@ -40,11 +40,11 @@ $vid= $_SESSION['vid'];
             <label for="msg" >Message</label>
             <textarea placeholder="optinal message" type="text" class="w3-input w3-border" id="msg" name="msg"></textarea>
           </div>          
-          <input type="hidden" name="id" value=<?php echo htmlentities($vid);?> />
+          <input type="hidden" name="id" value="<?php echo $vid;?>" />
         </form>
     </div>
     <footer class="w3-container w3-teal">
-    <button  class="w3-button w3-block w3-green w3-section w3-padding" name="order" form="order-form" type="submit">Confirm Order</button>
+    <button  class="w3-button w3-block w3-green w3-section w3-padding" name="order" id="order-form" form="order-form" type="submit">Confirm Order</button>
     </footer>
   </div>
 </div>

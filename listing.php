@@ -68,12 +68,11 @@ if ($query->rowCount()) {
             width: auto;
             margin: 10px auto;
         } */
-        
     </style>
 </head>
 
 <body>
-    
+
     <?php
     include 'includes\order.php';
     include 'includes\headers.php'; ?>
@@ -115,12 +114,12 @@ if ($query->rowCount()) {
             </div>
             <div class="offset-md-1 col-sm-8">
                 <!-- main listing -->
-                <?php foreach ($results as $result) { 
+                <?php foreach ($results as $result) {
                     // $_SESSION['vid']= $result->id;
-                    echo "id is $result->id";
+                    // echo "id is $result->id";
                     // $vid= $result->id;
-                    ?>
-                    
+                ?>
+
                     <div class="card mb-4">
                         <div class="row g-0">
                             <div class="col-md-4">
@@ -132,15 +131,15 @@ if ($query->rowCount()) {
                                     <p class="card-text"><small class="text-muted">Rs.<?php echo htmlentities($result->PricePerDay); ?></small></p>
 
                                     <ul class="sdetails">
-                                        <li><i class="fa fa-user" aria-hidden="true"></i> 2 seats</li>
+                                        <li><i class="fa fa-user" aria-hidden="true"></i> 2 seats </li>
                                         <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?></li>
                                         <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
                                     </ul>
                                     <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-                                    <button type="button" class="btn btn-primary dbutt"  onclick="confirmOrder(<?php echo htmlentities($result->id); ?>)"> 
-                                    <!--document.getElementTagName('header').style.display='none';document.getElementById('order101').style.display='block'; -->
+                                    <a type="button" href="product.php?vid=<?php echo htmlentities($result->id) ?>" class="btn btn-primary dbutt">
+                                        <!--document.getElementTagName('header').style.display='none';document.getElementById('order101').style.display='block'; -->
                                         Place Order <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                    </button>
+                                    </a>
 
                                     <!-- <button type="button" class="btn btn-outline-primary dbutt">Primary <i class="fa fa-angle-right" aria-hidden="true"></i></button> -->
                                 </div>
@@ -148,7 +147,7 @@ if ($query->rowCount()) {
                         </div>
                     </div>
                 <?php } ?>
-                <div class="card mb-4">
+                <!-- <div class="card mb-4">
                     <div class="row g-0">
                         <div class="col-md-4">
                             <img src="assets\images\slide1.jpg" class="img-fluid rounded-start list-img-h" alt="slide1.jpg">
@@ -164,53 +163,11 @@ if ($query->rowCount()) {
                                     <li><i class="fa fa-car" aria-hidden="true"></i>Petrol</li>
                                 </ul>
                                 <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-                                <button type="button" class="btn btn-outline-primary dbutt">Primary <i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                <!-- <button type="button" class="btn btn-outline-primary dbutt">Primary <i class="fa fa-angle-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="assets\images\slide1.jpg" class="img-fluid rounded-start list-img-h" alt="slide1.jpg">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Honda</h5>
-                                <p class="card-text"><small class="text-muted">Rs.1000/day</small></p>
-
-                                <ul class="sdetails">
-                                    <li><i class="fa fa-user" aria-hidden="true"></i> 2 seats</li>
-                                    <li><i class="fa fa-calendar" aria-hidden="true"></i>Alpha model</li>
-                                    <li><i class="fa fa-car" aria-hidden="true"></i>Petrol</li>
-                                </ul>
-                                <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-                                <button type="button" class="btn btn-outline-primary dbutt">Primary <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-4">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="assets\images\slide1.jpg" class="img-fluid rounded-start list-img-h" alt="slide1.jpg">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Honda</h5>
-                                <p class="card-text"><small class="text-muted">Rs.1000/day</small></p>
-
-                                <ul class="sdetails">
-                                    <li><i class="fa fa-user" aria-hidden="true"></i> 2 seats</li>
-                                    <li><i class="fa fa-calendar" aria-hidden="true"></i>Alpha model</li>
-                                    <li><i class="fa fa-car" aria-hidden="true"></i>Petrol</li>
-                                </ul>
-                                <!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-                                <button type="button" class="btn btn-outline-primary dbutt">Primary <i class="fa fa-angle-right" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
                 <!-- main listing -->
             </div>
 
@@ -221,23 +178,23 @@ if ($query->rowCount()) {
 
     <?php include 'includes\footer.php'; ?>
     <script>
-        function confirmOrder(va)
-        {
-        document.getElementById('header101').style.display='none';
-        document.getElementById('order101').style.display='block';
-        console.log("this is id"+ va);
-        sessionStorage.vid = va;
-        document.cookie = vid+ "="+ va;
-        console.log("cokkie : "+ getCookie(vid) );
-        // ck_vid =va;
+        // onclick="confirmOrder()"
+        function confirmOrder(va) {
+            document.getElementById('header101').style.display = 'none';
+            document.getElementById('order101').style.display = 'block';
+            console.log("this is id" + va);
+            sessionStorage.vid = va;
+            document.cookie = vid + "=" + va;
+            console.log("cokkie : " + getCookie(vid));
+            // ck_vid =va;
 
-        // setcookie(ck_vid);
-        console.log("this is id ifuncn session "+ sessionStorage.vid);
+            // setcookie(ck_vid);
+            console.log("this is id ifuncn session " + sessionStorage.vid);
         }
 
-        function confirmOrderClose(){
-            document.getElementById('header101').style.display='block';
-        document.getElementById('order101').style.display='none';
+        function confirmOrderClose() {
+            document.getElementById('header101').style.display = 'block';
+            document.getElementById('order101').style.display = 'none';
         }
     </script>
 </body>
