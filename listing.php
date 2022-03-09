@@ -16,7 +16,8 @@ if (isset($_POST['search'])) {
     $query = $dbh->prepare($sql);
     $query->bindParam(':brand', $brand, PDO::PARAM_STR);
     $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
-} else {
+} 
+else {
     $sql = "SELECT id,VehiclesTitle, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles;";
     $query = $dbh->prepare($sql);
 }

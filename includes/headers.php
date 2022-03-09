@@ -1,3 +1,5 @@
+
+
 <div class="site-mobile-menu site-navbar-target">
     <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
@@ -75,9 +77,9 @@
                         <hr class="dropdown-divider">
                     </li>
                     <!-- <li><a class="dropdown-item" href="#">My profile</a></li> -->
-                    <li>
+                    <!-- <li>
                         <p class="dropdown-item">Name Here</p>
-                    </li>
+                    </li> -->
                     <li><a class="dropdown-item" href="logout.php">Log out</a></li>
                 </ul>
             </div>

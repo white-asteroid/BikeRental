@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2022 at 04:48 PM
+-- Generation Time: Mar 09, 2022 at 07:09 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -28,17 +28,31 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `orders` (
-  `id` int(11) NOT NULL DEFAULT 0,
-  `BookingNumber` bigint(12) DEFAULT NULL,
-  `userEmail` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `uid` int(11) DEFAULT NULL,
+  `hno` varchar(10) NOT NULL,
+  `landmark` varchar(100) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` int(50) NOT NULL,
   `VehicleId` int(11) DEFAULT NULL,
-  `FromDate` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
-  `ToDate` varchar(20) CHARACTER SET latin1 DEFAULT NULL,
+  `fromdate` date NOT NULL,
+  `ToDate` date NOT NULL,
   `message` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
   `Status` int(11) DEFAULT NULL,
   `PostingDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `LastUpdationDate` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `uid`, `hno`, `landmark`, `city`, `state`, `VehicleId`, `fromdate`, `ToDate`, `message`, `Status`, `PostingDate`, `LastUpdationDate`) VALUES
+(4, 0, '125', '233-street', 'delhi', 0, 1, '0000-00-00', '0000-00-00', 'msg', 0, '2022-02-20 09:13:54', NULL),
+(5, 0, '125', 'landmark', ':cit', 0, 2, '0000-00-00', '2022-02-21', ':msg', 0, '2022-02-21 14:13:53', NULL),
+(6, 0, 'B125 GURU ', 'Laxmi nagar', 'East Delhi', 0, 1, '2022-02-21', '2022-02-27', 'dvc \r\n', 0, '2022-02-21 14:22:57', NULL),
+(7, 0, 'B125 GURU ', 'Laxmi nagar', 'East Delhi', 0, 1, '2022-02-21', '2022-02-22', '', 0, '2022-02-21 15:50:43', NULL),
+(8, 0, 'B125 GURU ', 'Laxmi nagar', 'East Delhi', 0, 1, '2022-02-21', '2022-02-22', '', 0, '2022-02-21 15:54:03', NULL);
 
 -- --------------------------------------------------------
 
@@ -88,7 +102,7 @@ INSERT INTO `users` (`id`, `FullName`, `EmailId`, `Password`, `ContactNo`, `dob`
 --
 
 CREATE TABLE `vehicles` (
-  `id` int(11) NOT NULL DEFAULT 0,
+  `id` int(11) NOT NULL,
   `VehiclesTitle` varchar(150) CHARACTER SET latin1 DEFAULT NULL,
   `VehiclesBrand` varchar(50) DEFAULT NULL,
   `VehiclesOverview` longtext CHARACTER SET latin1 DEFAULT NULL,
@@ -112,16 +126,16 @@ CREATE TABLE `vehicles` (
 --
 
 INSERT INTO `vehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AntiLockBrakingSystem`, `BrakeAssist`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
-(1, 'Honda Activa', 'Honda', 'lipsum code is a sample code that is generated just to put a sample code somewhere to use it as a example', 400, 'petrol', 2019, 'scooty1.jpg', NULL, NULL, NULL, NULL, 0, 1, 1, '2022-02-13 09:40:52', NULL),
-(2, 'Honda Activa 5G', 'Honda', 'lipsum code is a sample code that is generated just to put a sample code somewhere to use it as a example', 400, 'petrol', 2021, 'scooty2.jpg', NULL, NULL, NULL, NULL, 0, 1, 1, '2022-02-13 09:42:44', '2022-02-13 11:30:23'),
-(3, 'Honda Activa 6G', 'Honda', 'lipsum code is a sample code that is generated just to put a sample code somewhere to use it as a example', 400, 'petrol', 2022, 'scooty3.jpg', NULL, NULL, NULL, NULL, 0, 1, 1, '2022-02-13 09:43:22', NULL),
-(4, 'Honda Activa lets goo', 'Honda', 'lipsum code is a sample code that is generated just to put a sample code somewhere to use it as a example', 400, 'petrol', 2019, 'scooty4.jpg', NULL, NULL, NULL, NULL, 0, 1, 1, '2022-02-13 09:43:52', NULL),
-(5, 'TVS zest', 'TVS', 'one of the Best scooty ', 350, 'petrol', 2018, 'scooty5.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:28:14', NULL),
-(6, 'TVS Wego', 'TVS', 'Best for local travel', 350, 'petrol', 2019, 'scooty6.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:28:14', NULL),
-(7, 'TVS zest 2', 'TVS', 'one of the Best scooty ', 350, 'petrol', 2018, 'scooty5.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:30:05', NULL),
-(8, 'TVS ZEST ONE', 'TVS', 'Best for long travel', 350, 'petrol', 2019, 'scooty7.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:30:05', NULL),
-(9, 'TVS zest Electric', 'TVS', 'one of the Best scooty ', 350, 'electric', 2018, 'scooty9.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:33:19', NULL),
-(10, 'Hero Electric', 'Hero', 'Best for long travel and economical', 500, 'electric', 2022, 'scooty10.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:33:19', NULL);
+(1, 'Honda Activa', 'Honda', 'lipsum code is a sample code that is generated just to put a sample code somewhere to use it as a example', 400, 'petrol', 2019, 'scooty1.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, 0, 1, 1, '2022-02-13 09:40:52', '2022-02-21 13:40:04'),
+(2, 'Honda Activa 5G', 'Honda', 'lipsum code is a sample code that is generated just to put a sample code somewhere to use it as a example', 400, 'petrol', 2021, 'scooty2.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, 0, 1, 1, '2022-02-13 09:42:44', '2022-02-21 13:40:04'),
+(3, 'Honda Activa 6G', 'Honda', 'lipsum code is a sample code that is generated just to put a sample code somewhere to use it as a example', 400, 'petrol', 2022, 'scooty3.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, 0, 1, 1, '2022-02-13 09:43:22', '2022-02-21 13:40:04'),
+(4, 'Honda Activa lets goo', 'Honda', 'lipsum code is a sample code that is generated just to put a sample code somewhere to use it as a example', 400, 'petrol', 2019, 'scooty4.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, 0, 1, 1, '2022-02-13 09:43:52', '2022-02-21 13:40:04'),
+(5, 'TVS zest', 'TVS', 'one of the Best scooty ', 350, 'petrol', 2018, 'scooty5.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:28:14', '2022-02-21 13:40:04'),
+(6, 'TVS Wego', 'TVS', 'Best for local travel', 350, 'petrol', 2019, 'scooty6.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:28:14', '2022-02-21 13:40:04'),
+(7, 'TVS zest 2', 'TVS', 'one of the Best scooty ', 350, 'petrol', 2018, 'scooty5.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:30:05', '2022-02-21 13:40:04'),
+(8, 'TVS ZEST ONE', 'TVS', 'Best for long travel', 350, 'petrol', 2019, 'scooty7.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:30:05', '2022-02-21 13:40:04'),
+(9, 'TVS zest Electric', 'TVS', 'one of the Best scooty ', 350, 'electric', 2018, 'scooty9.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:33:19', '2022-02-21 13:40:04'),
+(10, 'Hero Electric', 'Hero', 'Best for long travel and economical', 500, 'electric', 2022, 'scooty10.jpg', 'scooty5.jpg', 'slide3.jpg', NULL, NULL, NULL, NULL, NULL, '2022-02-15 15:33:19', '2022-02-21 13:40:04');
 
 --
 -- Indexes for dumped tables
@@ -131,7 +145,9 @@ INSERT INTO `vehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOvervie
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`),
+  ADD KEY `orders_ibfk_1` (`VehicleId`);
 
 --
 -- Indexes for table `otp`
@@ -157,14 +173,32 @@ ALTER TABLE `vehicles`
 --
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `otp`
 --
 ALTER TABLE `otp`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `vehicles`
+--
+ALTER TABLE `vehicles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`VehicleId`) REFERENCES `vehicles` (`id`);
 
 --
 -- Constraints for table `otp`

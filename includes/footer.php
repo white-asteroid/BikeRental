@@ -47,11 +47,10 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
+            <i class="fas fa-gem me-3"></i>2-Rent
           </h6>
           <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
+            Rent your favourite bike and ride freely with minimum documentation
           </p>
         </div>
         <!-- Grid column -->
@@ -84,16 +83,16 @@
             Useful links
           </h6>
           <p>
-            <a href="#!" class="text-reset">Pricing</a>
+            <a href="listings.php" class="text-reset">Pricing</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Settings</a>
+            <a href="profile.php" class="text-reset">Settings</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Orders</a>
+            <a href="myorder.php" class="text-reset">Orders</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Help</a>
+            <a href="contactus.php" class="text-reset">Help</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -104,7 +103,7 @@
           <h6 class="text-uppercase fw-bold mb-4">
             Contact
           </h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p><i class="fas fa-home me-3"></i>Delhi, India </p>
           <p>
             <i class="fas fa-envelope me-3"></i>
             info@example.com
