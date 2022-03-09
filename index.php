@@ -7,7 +7,7 @@ if (isset($_SESSION['email'])) {
   // echo "$flag is  flag val ";
 }
 
-$sql = "SELECT VehiclesTitle,VehiclesOverview, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles ORDER BY RegDate DESC limit 6;";
+$sql = "SELECT id,VehiclesTitle,VehiclesOverview, VehiclesBrand, PricePerDay, FuelType, ModelYear, Vimage1 FROM vehicles ORDER BY RegDate DESC limit 6;";
 $query = $dbh->prepare($sql);
 
 $query->execute();
@@ -105,7 +105,7 @@ if ($query->rowCount()) {
                   <div class="card-body">
                     <h5 class="card-title"><?php echo htmlentities($result->VehiclesBrand);?></h5>
                     <p class="card-text"><?php echo htmlentities($result->VehiclesOverview);?> </p>
-                    <a href="product.php?vid=<?php echo htmlentities($result->id);?>" class="btn btn-primary">Go somewhere</a>
+                    <a href="product.php?vid=<?php echo htmlentities($result->id) ?>" class="btn btn-primary">Rent now</a>
                   </div>
                 </div>
               </div>
