@@ -173,7 +173,7 @@ if ($query->rowCount()) {
 
   <!-- Signup page starts -->
 
-  <?php include('includes\signup.php') ?>
+  <?php //include('includes\signup.php') ?>
 
   <!-- Signup page End -->
 </body>
